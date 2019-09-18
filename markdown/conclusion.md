@@ -1,3 +1,2 @@
-<!-- .slide: data-background-image="images/by-sa.svg" data-background-size="contain" -->
-
-Note: Add conclusion notes here.
+<!-- .slide: data-state="section-break" id="section-break-8" data-timing="10s" -->
+# Conclusion
