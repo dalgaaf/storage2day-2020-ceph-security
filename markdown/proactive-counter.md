@@ -11,6 +11,7 @@
 * Separate control nodes from other networks
 * Do not expose to the internet
 * Encrypt inter-datacenter traffic
+* Enable Ceph client host ip:port(s) in firewall
 
 
 <!-- .slide: data-state="normal" id="proact-2" data-timing="20s" data-menu-title="Proactive: Hyper-converged" -->
@@ -68,11 +69,9 @@ Note: see CVEs
 * Run non-root Ceph daemons
   * no escalation to root privileges
   * run as 'ceph' user and group
-
 * MAC
   * SELinux / AppArmor
   * SELinux profiles available
-
 * May run (some daemons) in containers or VMs
   * MONs and RGWs
 

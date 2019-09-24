@@ -17,6 +17,9 @@
 <!-- .slide: data-state="normal" id="attack-1" data-timing="20s" data-menu-title="Attack Surface: DoS" -->
 ## Attack Surface - General
 
+### Flaws and Bugs
+* An issue in one daemon effects all daemons of this type!
+
 ### Denial of Service
 * Open many connections <!-- .element class="fragment" -->
 * Submit many/large/small or expensive IOs
@@ -127,23 +130,29 @@ Note: same applies to CephFS and also librados
 <!-- .slide: data-state="normal" id="attack-9" data-timing="20s" data-menu-title="Attack Surface: MONs" -->
 ## Attack Surface - Ceph MONs
 
-*  <!-- .element class="fragment" -->
-*  <!-- .element class="fragment" -->
-*  <!-- .element class="fragment" -->
+* Compromise Auth database <!-- .element class="fragment" -->
+  * Inject keys <!-- .element class="fragment" -->
+  * Manipulate key capabilities <!-- .element class="fragment" -->
+  * Extract keys <!-- .element class="fragment" -->
+* Manipulate config settings <!-- .element class="fragment" -->
 
 
 <!-- .slide: data-state="normal" id="attack-10" data-timing="20s" data-menu-title="Attack Surface: MGR" -->
 ## Attack Surface - Ceph Manager
 
-*  <!-- .element class="fragment" -->
-*  <!-- .element class="fragment" -->
-*  <!-- .element class="fragment" -->
+* Utilize Ceph flaws to:
+  * load existing modules <!-- .element class="fragment" -->
+  * load malicious modules <!-- .element class="fragment" -->
+* Replace valid module on disk with malicious code <!-- .element class="fragment" -->
+* Modules are currently not verified/signed/...
 
 
 <!-- .slide: data-state="normal" id="attack-11" data-timing="20s" data-menu-title="Attack Surface: Dashboard" -->
 ## Attack Surface - Ceph Dashboard
 
-*  <!-- .element class="fragment" -->
-*  <!-- .element class="fragment" -->
-*  <!-- .element class="fragment" -->
+* Webservice <!-- .element class="fragment" -->
+  * typical HTTP(s) / API attack surface <!-- .element class="fragment" -->
+  * Flaws in authentication <!-- .element class="fragment" -->
+  * Role escalation
+  * Brute-force attack on weak passwords
 
