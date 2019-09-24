@@ -199,7 +199,13 @@ Note:
 
 ### Ceph Dashboard
 
-# TODO !!!
+* Enable SSL/TLS
+* User accounts
+  * enforce strong passwords (WIP for Octopus)
+  * Cleanup users
+  * Limit user roles, security scopes and permissions to minimum
+* Monitor ceph auth log
+* Consider using a WAF (mod_security)
 
 
 <!-- .slide: data-state="normal" id="proact-20" data-timing="20s" data-menu-title="Proactive: Defects" -->
