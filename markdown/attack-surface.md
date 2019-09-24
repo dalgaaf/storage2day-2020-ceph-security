@@ -34,6 +34,7 @@
 * Sessions are authenticated with CephX <!-- .element class="fragment" -->
   * no impersonate clients or daemons
   * no man-in-the-middle attacks
+  * no TCP session hijacking
 
 
 <!-- .slide: data-state="normal" id="attack-3" data-timing="20s" data-menu-title="Attack Surface: " -->
@@ -57,7 +58,7 @@
 ## Attack Surface - Rados Gateway
 
 <div>
-    <img style="width: 35%; left: 55%; position: absolute" alt="RGW"
+    <img style="width: 30%; left: 70%; position: absolute" alt="RGW"
          data-src="images/rgw.svg" />
 </div>
 
@@ -95,7 +96,7 @@ Note:
 ## Attack Surface - RBD Host
 
 <div>
-    <img style="width: 100%; left: 35%; position: absolute" alt="RBD"
+    <img style="height: 100%; left: 35%; position: absolute" alt="RBD-Host"
          data-src="images/rbd-host.svg" />
 </div>
 
@@ -112,7 +113,7 @@ Note: same applies to CephFS and also librados
 ## Attack Surface - CephFS
 
 <div>
-    <img style="width: 60%; left: 55%; position: absolute" alt="CephFS"
+    <img style="width: 35%; left: 65%; position: absolute" alt="CephFS"
          data-src="images/cephfs.svg" />
 </div>
 

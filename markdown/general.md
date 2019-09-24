@@ -17,9 +17,7 @@
 * who has access to your cluster
 
 
-<!-- .slide: data-state="normal" id="intro-2" data-timing="20s" data-menu-title="Ceph Overview" -->
-## Ceph Overview 
-# TODO: add general graphic for Ceph
+<!-- .slide: data-state="normal" id="intro-2" data-timing="20s" data-menu-title="Ceph Overview" data-background-image="images/ceph-stack.svg" data-background-size="auto 90%" -->
 
 
 <!-- .slide: data-state="normal" id="intro-3" data-timing="20s" data-menu-title="Ceph Components" -->
