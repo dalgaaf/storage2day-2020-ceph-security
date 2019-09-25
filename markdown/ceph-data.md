@@ -1,5 +1,5 @@
 <!-- .slide: data-state="section-break" id="section-break-2.2" data-timing="10s" -->
-# Data Integrity and Deletion
+# Data Management
 
 
 <!-- .slide: data-state="normal" id="data-1" data-timing="20s" data-menu-title="Thread Actors" -->
