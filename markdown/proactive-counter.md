@@ -208,6 +208,17 @@ Note:
 * Consider using a WAF (mod_security)
 
 
+<!-- .slide: data-state="normal" id="proact-11" data-timing="20s" data-menu-title="Proactive: CephFS" -->
+## Deployment and Setup
+
+### Ceph Manager
+
+# TODO !!!
+* Monitor module loading ...
+* TODO: add verification of modules ...
+* 
+
+
 <!-- .slide: data-state="normal" id="proact-20" data-timing="20s" data-menu-title="Proactive: Defects" -->
 ## Community
 
