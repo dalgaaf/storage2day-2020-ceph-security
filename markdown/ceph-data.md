@@ -22,18 +22,16 @@ Note:
 
 
 <!-- .slide: data-state="normal" id="data-2" data-timing="20s" data-menu-title="Replication Diagram" -->
-## Data Distribution
-### Replication
+## Replication
 <div>
-  <center><img data-src="images/replica_explained.svg" style="width:30%"></center>
+  <center><img data-src="images/replica_explained.svg" style="width:35%"></center>
 </div>
 
 
-<!-- .slide: data-state="normal" id="EC-0.2" data-timing="20s" data-menu-title="Erasure Coding Diagram" -->
-## Data Distribution
-### Erasure Coding
+<!-- .slide: data-state="normal" id="data-3" data-timing="20s" data-menu-title="Erasure Coding Diagram" -->
+## Erasure Coding
 <div>
-  <center><img data-src="images/ec_explained_extra.svg" style="width:55%"></center>
+  <center><img data-src="images/ec_explained_extra.svg" style="width:65%"></center>
 </div>
 
 Note:
@@ -42,13 +40,34 @@ Note:
 - chunks/shards will be distributed as defined in crush and erasure code profile
 
 
-<!-- .slide: data-state="normal" id="data-1" data-timing="20s" data-menu-title="Thread Actors" -->
+<!-- .slide: data-state="normal" id="data-4" data-timing="20s" data-menu-title="Thread Actors" -->
 ## Data Integrity
 
-TODO: add scrubbing
+### Maintain data consistency and cleanliness
+* Scrub:
+  * compare object metadata in one PG with it peers on other OSDs
+  * usually performed daily
+  * catches bugs and flaws
+* Deep Scrub:
+  * comparing data in objects bit-by-bit
+  * usually performed weekly
+  * catches e.g. bad sectors not found by normal scrubbing
+* CephFS provides own additional scubbing
+  * Forward scrub to ensure fs conistency
+  * Backward scrub to verify each RADOS object
 
 
-<!-- .slide: data-state="normal" id="data-2" data-timing="20s" data-menu-title="General considerations" -->
+<!-- .slide: data-state="normal" id="data-5" data-timing="20s" data-menu-title="General considerations" -->
 ## Data Deletion
 
-TODO: add info 
+* Deleting RBD/RGW/CephFS objects Ceph destroys object on Rados
+* Deletion of a pool does destroy all related Rados objects
+* Objects are not recoverable after deletion
+* Residual data artifacs may reside on storage media till overwritten
+* CephFS:
+  * File marked as deleted in MDS
+  * Rados objects delayed lazily
+* Keep in mind:
+  * Snaphots may still hold data
+  * Client side encryption of data protects if key destroyed
+
