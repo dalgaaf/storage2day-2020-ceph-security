@@ -51,6 +51,7 @@ Note: see CVEs
 * Separate key for each client/user
 * Restrict users to __absolute minimum__ required caps
 * Distribute keys __only where absolutely__ needed
+* Limit permissions to key files
 * Limit administrator power
   * may use keys with 'read-only' caps
   * restrict __profile role-definer__ or __'allow *'__ keys
@@ -58,6 +59,9 @@ Note: see CVEs
 
 ### TODOs:
 * implement counterpart to __allow__ to strip caps
+
+Note:
+* Limit permissions to key files (admin=root, user=user,root)
 
 
 <!-- .slide: data-state="normal" id="proact-5" data-timing="20s" data-menu-title="Proactive: Hardening" -->
@@ -120,13 +124,23 @@ Note: limit on max open sockets per IP may be done on network layer
 ### Encryption - On Wire
 
 * Protect data from listener on networks
-* Since Nautilus: Encryption to MONs
-  * protects e.g. configuring keys
-* Currently not supported in Ceph for data payload, but planed
-* Alternatives:
-  * RBD: use dm-crypt
-  * others: encrypt on client side
-  * may consider IPSec
+* Starting with Nautilus enable messenger v2 protocol
+
+```none
+ ceph mon enable-msgr2
+```
+  * enable ``secure`` mode for encryption (AES-GCM stream cipher)
+
+```none
+ ms_cluster_mode = secure
+ ms_service_mode = secure
+ ms_client_mode = secure
+ ms_mon_cluster_mode = secure
+ ms_mon_service_mode = secure
+ ms_mon_client_mode = secure
+```
+
+* Alternatives: client-side encryption
 
 
 <!-- .slide: data-state="normal" id="proact-8" data-timing="20s" data-menu-title="Proactive: RGW" -->
@@ -194,7 +208,7 @@ Note:
 - network restrictions: e.g. with multiple CephFS instances
 
 
-<!-- .slide: data-state="normal" id="proact-11" data-timing="20s" data-menu-title="Proactive: CephFS" -->
+<!-- .slide: data-state="normal" id="proact-11" data-timing="20s" data-menu-title="Proactive: Dashboard" -->
 ## Deployment and Setup
 
 ### Ceph Dashboard
@@ -208,15 +222,18 @@ Note:
 * Consider using a WAF (mod_security)
 
 
-<!-- .slide: data-state="normal" id="proact-11" data-timing="20s" data-menu-title="Proactive: CephFS" -->
+<!-- .slide: data-state="normal" id="proact-12" data-timing="20s" data-menu-title="Proactive: Manager" -->
 ## Deployment and Setup
 
 ### Ceph Manager
 
-# TODO !!!
-* Monitor module loading ...
-* TODO: add verification of modules ...
-* 
+* Monitor loading of modules
+* Ensure only root/ceph user can access the module directories
+* Use MAC to control access to modules
+* run ceph-mgr in a container
+
+### TODO: 
+* add verification of modules
 
 
 <!-- .slide: data-state="normal" id="proact-20" data-timing="20s" data-menu-title="Proactive: Defects" -->

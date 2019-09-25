@@ -31,8 +31,8 @@
 ## Attack Surface - General
 
 ### Network
-* Client/Cluster sessions not encrypted <!-- .element class="fragment" -->
-  * except connections with MONs
+
+* Client/Cluster sessions prior Nautilus are not encrypted <!-- .element class="fragment" -->
   * Sniffer can recover any data read/written <!-- .element class="fragment" -->
 * Sessions are authenticated with CephX <!-- .element class="fragment" -->
   * no impersonate clients or daemons
