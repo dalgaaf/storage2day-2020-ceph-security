@@ -23,7 +23,6 @@ Note:
 
 <!-- .slide: data-state="normal" id="data-2" data-timing="20s" data-menu-title="Replication Diagram" -->
 ## Data Distribution
-
 ### Replication
 <div>
   <center><img data-src="images/replica_explained.svg" style="width:30%"></center>
@@ -32,10 +31,9 @@ Note:
 
 <!-- .slide: data-state="normal" id="EC-0.2" data-timing="20s" data-menu-title="Erasure Coding Diagram" -->
 ## Data Distribution
-
 ### Erasure Coding
 <div>
-  <center><img data-src="images/ec_explained_extra.svg" style="width:65%"></center>
+  <center><img data-src="images/ec_explained_extra.svg" style="width:55%"></center>
 </div>
 
 Note:
@@ -48,6 +46,7 @@ Note:
 ## Data Integrity
 
 TODO: add scrubbing
+
 
 <!-- .slide: data-state="normal" id="data-2" data-timing="20s" data-menu-title="General considerations" -->
 ## Data Deletion
