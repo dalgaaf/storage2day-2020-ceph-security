@@ -65,76 +65,82 @@
 </canvas>
 
 
-<!-- .slide: data-state="normal" id="ceph-CVEs-0" data-timing="20s" data-menu-title="CVE-2019-3821" -->
+<!-- .slide: data-state="normal" id="ceph-CVEs-1" data-timing="20s" data-menu-title="CVE-2019-3821" -->
 ## CVE-2019-3821
 
-### Ceph Versions
-* mimic
+### Ceph Versions <!-- .element: class="fragment" data-fragment-index="1" -->
+* mimic <!-- .element: class="fragment" data-fragment-index="1" -->
 
-### Issue
-* civetweb frontend flaw in handling requests to ceph RGW server with SSL enabled
-* unauthenticated attacker could create multiple connections to Radosgw to exhaust file descriptors
+### Issue <!-- .element: class="fragment" data-fragment-index="2" -->
+* civetweb frontend flaw in handling requests to ceph RGW server with SSL enabled <!-- .element: class="fragment" data-fragment-index="2" -->
+* unauthenticated attacker could create multiple connections to Radosgw to exhaust file descriptors <!-- .element: class="fragment" data-fragment-index="3" -->
 
-### Impact
-* remote Denial of Service
+### Impact <!-- .element: class="fragment" data-fragment-index="4" -->
+* remote Denial of Service <!-- .element: class="fragment" data-fragment-index="4" -->
 
 Note: cause by imported code
 
 
-<!-- .slide: data-state="normal" id="ceph-CVEs-1" data-timing="20s" data-menu-title="CVE-2018-7262" -->
+<!-- .slide: data-state="normal" id="ceph-CVEs-2" data-timing="20s" data-menu-title="CVE-2018-7262" -->
 ## CVE-2018-7262
 
-### Ceph versions
-* before 12.2.3
-* 13.x till 13.0.1
+### Ceph versions <!-- .element: class="fragment" data-fragment-index="1" -->
+* before 12.2.3 <!-- .element: class="fragment" data-fragment-index="1" -->
+* 13.x till 13.0.1 <!-- .element: class="fragment" data-fragment-index="1" -->
 
-### Issue
-* Radosgw doesn't handle malformed HTTP headers properly
+### Issue <!-- .element: class="fragment" data-fragment-index="2" -->
+* Radosgw doesn't handle malformed HTTP headers properly <!-- .element: class="fragment" data-fragment-index="2" -->
 
-### Impact
-* remote Denial of Service
+### Impact <!-- .element: class="fragment" data-fragment-index="3" -->
+* remote Denial of Service <!-- .element: class="fragment" data-fragment-index="3" -->
 
 
-<!-- .slide: data-state="normal" id="ceph-CVEs-2" data-timing="20s" data-menu-title="CVE-2018-14662" -->
+<!-- .slide: data-state="normal" id="ceph-CVEs-3" data-timing="20s" data-menu-title="CVE-2018-14662" -->
 ## CVE-2018-14662
 
-### Ceph Versions
-* before 13.2.4
+### Ceph Versions <!-- .element: class="fragment" data-fragment-index="1" -->
+* before 13.2.4 <!-- .element: class="fragment" data-fragment-index="1" -->
 
-### Issue
-* authenticated users with read-only permissions could steal dm-crypt encryption keys
+### Issue <!-- .element: class="fragment" data-fragment-index="2" -->
+* authenticated users with read-only permissions could steal dm-crypt encryption keys <!-- .element: class="fragment" data-fragment-index="2" -->
 
-### Impact
-* encryption keys leak
+### Impact <!-- .element: class="fragment" data-fragment-index="3" -->
+* encryption keys leak <!-- .element: class="fragment" data-fragment-index="3" -->
 
-
-<!-- .slide: data-state="normal" id="ceph-CVEs-3" data-timing="20s" data-menu-title="" -->
-## CVE-2018-1128
-
-### Ceph Versions
-* mimic
-* luminous
-* jewel
-
-### Issue
-* cephx authentication protocol did not verify ceph clients correctly
-
-### Impact
-* replay attack
+Note: 
+* ignored the fact that not every information hold by the MON should be accessible for everyone.
 
 
 <!-- .slide: data-state="normal" id="ceph-CVEs-4" data-timing="20s" data-menu-title="" -->
+## CVE-2018-1128
+
+### Ceph Versions <!-- .element: class="fragment" data-fragment-index="1" -->
+* mimic <!-- .element: class="fragment" data-fragment-index="1" -->
+* luminous <!-- .element: class="fragment" data-fragment-index="1" -->
+* jewel <!-- .element: class="fragment" data-fragment-index="1" -->
+
+### Issue <!-- .element: class="fragment" data-fragment-index="2" -->
+* cephx authentication protocol did not verify ceph clients correctly <!-- .element: class="fragment" data-fragment-index="2" -->
+
+### Impact <!-- .element: class="fragment" data-fragment-index="3" -->
+* replay attack <!-- .element: class="fragment" data-fragment-index="3" -->
+
+Note:
+* 
+
+
+<!-- .slide: data-state="normal" id="ceph-CVEs-5" data-timing="20s" data-menu-title="" -->
 ## CVE-2018-1129
 
-### Ceph Versions
-* mimic
-* luminous
-* jewel
+### Ceph Versions <!-- .element: class="fragment" data-fragment-index="1" -->
+* mimic <!-- .element: class="fragment" data-fragment-index="1" -->
+* luminous <!-- .element: class="fragment" data-fragment-index="1" -->
+* jewel <!-- .element: class="fragment" data-fragment-index="1" -->
 
-### Issue
-* signature calculation was handled weakly by cephx authentication protocol
+### Issue <!-- .element: class="fragment" data-fragment-index="2" -->
+* signature calculation was handled weakly by cephx authentication protocol <!-- .element: class="fragment" data-fragment-index="2" -->
 
-### Impact
-* alter payload
+### Impact <!-- .element: class="fragment" data-fragment-index="3" -->
+* alter payload <!-- .element: class="fragment" data-fragment-index="3" -->
 
 Note: solved by introducing CEPHX_V2 in Nautilus

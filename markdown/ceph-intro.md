@@ -8,65 +8,65 @@
 <!-- .slide: data-state="normal" id="intro-3" data-timing="20s" data-menu-title="Ceph Components" -->
 ## Ceph Components
 
-### Monitors (MON)
-* lightweight daemon
-* paxos protocol, odd number
-* maintains maps of the cluster state
-* authentication (CephX)
+### Monitors (MON) <!-- .element: class="fragment" data-fragment-index="0" -->
+* lightweight daemon <!-- .element: class="fragment" data-fragment-index="1" -->
+* paxos protocol, odd number <!-- .element: class="fragment" data-fragment-index="1" -->
+* maintains maps of the cluster state <!-- .element: class="fragment" data-fragment-index="1" -->
+* authentication (CephX) <!-- .element: class="fragment" data-fragment-index="1" -->
 
-### Object Storage Daemon (OSD)
-* smart storage daemon, coordinates with peers
-* handles data replication, recovery, backfilling, and rebalancing
-* BlueStore
-  * utilize raw storage device
-  * Object data, RocksDB (kv-store), Write-ahead log of RocksDB
+### Object Storage Daemon (OSD) <!-- .element: class="fragment" data-fragment-index="2" -->
+* smart storage daemon, coordinates with peers <!-- .element: class="fragment" data-fragment-index="3" -->
+* handles data replication, recovery, backfilling, and rebalancing <!-- .element: class="fragment" data-fragment-index="3" -->
+* BlueStore <!-- .element: class="fragment" data-fragment-index="4" -->
+  * utilize raw storage device <!-- .element: class="fragment" data-fragment-index="5" -->
+  * Object data, RocksDB (kv-store), Write-ahead log of RocksDB <!-- .element: class="fragment" data-fragment-index="5" -->
 
 
 <!-- .slide: data-state="normal" id="intro-3" data-timing="20s" data-menu-title="Ceph Components" -->
 ## Ceph Components
 
-### Metadata Server (MDS)
-* metadata for posix-compliant shared filesystem (CephFS)
-  * directory hierachy
-  * file metadata
-* multi-MDS support  multi-active, standby, standby-replay, hot-standby)
-* coordinate access
+### Metadata Server (MDS) <!-- .element: class="fragment" data-fragment-index="0" -->
+* metadata for posix-compliant shared filesystem (CephFS) <!-- .element: class="fragment" data-fragment-index="1" -->
+  * directory hierachy <!-- .element: class="fragment" data-fragment-index="1" -->
+  * file metadata <!-- .element: class="fragment" data-fragment-index="1" -->
+* multi-MDS support  multi-active, standby, standby-replay, hot-standby) <!-- .element: class="fragment" data-fragment-index="2" -->
+* coordinate access <!-- .element: class="fragment" data-fragment-index="2" -->
 
-### Rados Gateway (RGW)
-* RESTful gateway
-  * Amazon S3
-  * Swift
-* Separate user management
+### Rados Gateway (RGW) <!-- .element: class="fragment" data-fragment-index="3" -->
+* RESTful gateway <!-- .element: class="fragment" data-fragment-index="4" -->
+  * Amazon S3 <!-- .element: class="fragment" data-fragment-index="4" -->
+  * Swift <!-- .element: class="fragment" data-fragment-index="4" -->
+* Separate user management <!-- .element: class="fragment" data-fragment-index="5" -->
 
 
 <!-- .slide: data-state="normal" id="intro-4" data-timing="20s" data-menu-title="Ceph Components" -->
 ## Ceph Components
 
-### Ceph Manager Daemon (MGR)
-* runs alongside MONs to provide
-  * additional monitoring
-  * interface to external monitoring
-  * interface to external management/orchestrators
-* Flexible through modules, loaded via a python subinterpretor
+### Ceph Manager Daemon (MGR) <!-- .element: class="fragment" data-fragment-index="0" -->
+* runs alongside MONs to provide <!-- .element: class="fragment" data-fragment-index="1" -->
+  * additional monitoring <!-- .element: class="fragment" data-fragment-index="2" -->
+  * interface to external monitoring <!-- .element: class="fragment" data-fragment-index="2" -->
+  * interface to external management/orchestrators <!-- .element: class="fragment" data-fragment-index="2" -->
+* Flexible through modules, loaded via a python subinterpretor <!-- .element: class="fragment" data-fragment-index="3" -->
 
-### Ceph Dashboard Module 
-* built-in web-based management and monitoring
-* Multi-User and Role Management
-* Single Sign-On
-* SSL/TLS support
-* Auditing
+### Ceph Dashboard Module  <!-- .element: class="fragment" data-fragment-index="4" -->
+* built-in web-based management and monitoring <!-- .element: class="fragment" data-fragment-index="5" -->
+* Multi-User and Role Management <!-- .element: class="fragment" data-fragment-index="5" -->
+* Single Sign-On <!-- .element: class="fragment" data-fragment-index="5" -->
+* SSL/TLS support <!-- .element: class="fragment" data-fragment-index="5" -->
+* Auditing <!-- .element: class="fragment" data-fragment-index="5" -->
 
 
 <!-- .slide: data-state="normal" id="intro-5" data-timing="20s" data-menu-title="Ceph Networks" -->
 ## Ceph Networks
 
-* IPv4 or IPv6
-* public
-  * interface for clients
-* cluster
-  * replication
-  * recovery
-  * heartbeat
+* IPv4 or IPv6 <!-- .element: class="fragment" data-fragment-index="0" -->
+* public <!-- .element: class="fragment" data-fragment-index="1" -->
+  * interface for clients <!-- .element: class="fragment" data-fragment-index="1" -->
+* cluster <!-- .element: class="fragment" data-fragment-index="2" -->
+  * replication <!-- .element: class="fragment" data-fragment-index="3" -->
+  * recovery <!-- .element: class="fragment" data-fragment-index="4" -->
+  * heartbeat <!-- .element: class="fragment" data-fragment-index="5" -->
 
 
 <!-- .slide: data-state="normal" id="intro-6" data-timing="20s" data-menu-title="Ceph Networks - Ports" -->

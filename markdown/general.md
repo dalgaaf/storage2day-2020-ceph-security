@@ -5,26 +5,26 @@
 <!-- .slide: data-state="normal" id="sec-general-0" data-timing="20s" data-menu-title="Thread Actors" -->
 ## General considerations
 
-### Threat Actors
+### Threat Actors <!-- .element class="fragment" -->
 
-* Nation-State Actors
-* Organized Crime
-* Highly Capable Groups (Hacktivist)
-* Motivated Individuals Acting Alone (Insider)
-* Script Kiddies
+* Nation-State Actors <!-- .element class="fragment" -->
+* Organized Crime <!-- .element class="fragment" -->
+* Highly Capable Groups (Hacktivist) <!-- .element class="fragment" -->
+* Motivated Individuals Acting Alone (Insider) <!-- .element class="fragment" -->
+* Script Kiddies <!-- .element class="fragment" -->
 
 
 <!-- .slide: data-state="normal" id="sec-general-1" data-timing="20s" data-menu-title="General considerations" -->
 ## General considerations
 
-### Is your Ceph:
-* an internal cluster?
-* exposed to customers?
-* exposed to the internet?
+### Is your Ceph: <!-- .element class="fragment" -->
+* an internal cluster? <!-- .element class="fragment" -->
+* exposed to customers? <!-- .element class="fragment" -->
+* exposed to the internet? <!-- .element class="fragment" -->
 
-### Understand:
-* your security requirements and standards
-* services you enable
-* security risks implied
-* who has access to your cluster
+### Understand: <!-- .element class="fragment" -->
+* your security requirements and standards <!-- .element class="fragment" -->
+* services you enable <!-- .element class="fragment" -->
+* security risks implied <!-- .element class="fragment" -->
+* who has access to your cluster <!-- .element class="fragment" -->
 
