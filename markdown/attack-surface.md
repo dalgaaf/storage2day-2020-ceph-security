@@ -156,7 +156,7 @@ Note: same applies to CephFS and also librados
   * Flaws in authentication <!-- .element class="fragment" -->
   * Role escalation
   * Brute-force attack on weak passwords
-* Runs in Ceph Manager context
+* Runs in Ceph Manager context, but is stateless
 * Stores login information on several external services in MON KV-store
 
 
