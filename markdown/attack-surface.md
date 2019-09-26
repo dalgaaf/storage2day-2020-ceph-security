@@ -144,6 +144,7 @@ Note: same applies to CephFS and also librados
   * load existing modules <!-- .element class="fragment" -->
   * load malicious modules <!-- .element class="fragment" -->
 * Replace valid module on disk with malicious code <!-- .element class="fragment" -->
+* Modules aren't loaded dynamically
 * Modules are currently not verified/signed/...
 
 

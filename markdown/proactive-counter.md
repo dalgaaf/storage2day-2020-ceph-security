@@ -227,13 +227,13 @@ Note:
 
 ### Ceph Manager
 
-* Monitor loading of modules
+* Monitor loading of modules on start
 * Ensure only root/ceph user can access the module directories
 * Use MAC to control access to modules
-* run ceph-mgr in a container
+* Run ceph-mgr in a container
 
 ### TODO: 
-* add verification of modules
+* Verification of modules?
 
 
 <!-- .slide: data-state="normal" id="proact-20" data-timing="20s" data-menu-title="Proactive: Defects" -->
