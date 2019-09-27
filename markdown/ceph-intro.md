@@ -2,10 +2,10 @@
 # Intro
 
 
-<!-- .slide: data-state="normal" id="intro-2" data-timing="20s" data-menu-title="Ceph Overview" data-background-image="images/ceph-stack.svg" data-background-size="auto 90%" -->
+<!-- .slide: data-state="normal" id="intro-1" data-timing="20s" data-menu-title="Ceph Overview" data-background-image="images/ceph-stack.svg" data-background-size="auto 90%" -->
 
 
-<!-- .slide: data-state="normal" id="intro-3" data-timing="20s" data-menu-title="Ceph Components" -->
+<!-- .slide: data-state="normal" id="intro-2" data-timing="20s" data-menu-title="Ceph Components" -->
 ## Ceph Components
 
 ### Monitors (MON) <!-- .element: class="fragment" data-fragment-index="0" -->
