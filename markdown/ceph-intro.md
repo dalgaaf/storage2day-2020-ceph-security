@@ -29,7 +29,7 @@
 * metadata for posix-compliant shared filesystem (CephFS) <!-- .element: class="fragment" data-fragment-index="1" -->
   * directory hierachy <!-- .element: class="fragment" data-fragment-index="1" -->
   * file metadata <!-- .element: class="fragment" data-fragment-index="1" -->
-* multi-MDS support  multi-active, standby, standby-replay, hot-standby) <!-- .element: class="fragment" data-fragment-index="2" -->
+* multi-MDS support multi-active, standby, standby-replay, hot-standby <!-- .element: class="fragment" data-fragment-index="2" -->
 * coordinate access <!-- .element: class="fragment" data-fragment-index="2" -->
 
 ### Rados Gateway (RGW) <!-- .element: class="fragment" data-fragment-index="3" -->
