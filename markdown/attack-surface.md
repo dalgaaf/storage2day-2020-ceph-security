@@ -54,7 +54,7 @@
 * Compromised hosts, stolen keys <!-- .element class="fragment" -->
 * Leakage of keys <!-- .element class="fragment" -->
 * Exploit flaws in the protocol/algorithm <!-- .element class="fragment" -->
-* Wrong set /to wide capabilites for certain users<!-- .element class="fragment" -->
+* Wrong /too wide set capabilites for certain users<!-- .element class="fragment" -->
 
 
 <!-- .slide: data-state="normal" id="attack-4" data-timing="20s" data-menu-title="Attack Surface: RGW" -->
@@ -106,9 +106,11 @@ Note:
 * If host compromised (or KVM), attacker has access to: <!-- .element class="fragment" -->
   * Ceph Keys on the host <!-- .element class="fragment" -->
   * Ceph public network <!-- .element class="fragment" -->
-  * Ceph daemons <!-- .element class="fragment" -->
+  * Ceph daemons through network (or directly with HCI) <!-- .element class="fragment" -->
 
-Note: same applies to CephFS and also librados
+Note:
+- same applies to CephFS and also librados
+- HCI: Hyperconverged infrastructure !
 
 
 <!-- .slide: data-state="normal" id="attack-7" data-timing="20s" data-menu-title="Attack Surface: CephFS" -->
@@ -134,6 +136,9 @@ Note: same applies to CephFS and also librados
   * Manipulate key capabilities <!-- .element class="fragment" -->
   * Extract keys <!-- .element class="fragment" -->
 * Manipulate config settings <!-- .element class="fragment" -->
+* Fully compromised MON: <!-- .element class="fragment" -->
+  * Attacker controls complete cluster <!-- .element class="fragment" -->
+  * incl. At-Rest-Encryption keys <!-- .element class="fragment" -->
 
 
 <!-- .slide: data-state="normal" id="attack-10" data-timing="20s" data-menu-title="Attack Surface: MGR" -->
@@ -144,18 +149,23 @@ Note: same applies to CephFS and also librados
   * load malicious modules <!-- .element class="fragment" -->
 * Replace valid module on disk with malicious code <!-- .element class="fragment" -->
 * Modules aren't loaded dynamically <!-- .element class="fragment" -->
-* Modules are currently not verified/signed/... <!-- .element class="fragment" -->
+* Modules itself are currently not verified/signed/... <!-- .element class="fragment" -->
+
+Note:
+- modules: RPMs are verified & signed by distro
+- replacing modules usually requires root access, in this case you are already in HELL
 
 
 <!-- .slide: data-state="normal" id="attack-11" data-timing="20s" data-menu-title="Attack Surface: Dashboard" -->
 ## Attack Surface - Ceph Dashboard
 
 * Webservice <!-- .element class="fragment" -->
-  * typical HTTP(s) / API attack surface <!-- .element class="fragment" -->
+  * Typical HTTP(s) / API attack surface <!-- .element class="fragment" -->
+    * incl. directory traversal to root filesystem <!-- .element class="fragment" -->
   * Flaws in authentication <!-- .element class="fragment" -->
   * Role escalation <!-- .element class="fragment" -->
   * Brute-force attack on weak passwords <!-- .element class="fragment" -->
 * Runs in Ceph Manager context, but is stateless <!-- .element class="fragment" -->
 * Stores login information on several external services in MON KV-store <!-- .element class="fragment" -->
-
+* Full admin access <!-- .element class="fragment" -->
 

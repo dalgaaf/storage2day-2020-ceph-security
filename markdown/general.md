@@ -21,10 +21,14 @@
 * an internal cluster? <!-- .element class="fragment" -->
 * exposed to customers? <!-- .element class="fragment" -->
 * exposed to the internet? <!-- .element class="fragment" -->
+* which services/APIs is exposed? <!-- .element class="fragment" -->
 
 ### Understand: <!-- .element class="fragment" -->
 * your security requirements and standards <!-- .element class="fragment" -->
 * services you enable <!-- .element class="fragment" -->
 * security risks implied <!-- .element class="fragment" -->
 * who has access to your cluster <!-- .element class="fragment" -->
+
+Note:
+- different scenario of e.g. RBD/RADOS or S3 is exposed
 

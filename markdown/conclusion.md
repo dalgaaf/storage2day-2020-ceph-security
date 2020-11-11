@@ -15,4 +15,4 @@
   * Monitoring <!-- .element class="fragment" -->
   * Update <!-- .element class="fragment" -->
 * Be vigilant !!! <!-- .element class="fragment" -->
-* Use Ceph Nautilus release !<!-- .element class="fragment" -->
+* Use Ceph at least Nautilus release!<!-- .element class="fragment" -->

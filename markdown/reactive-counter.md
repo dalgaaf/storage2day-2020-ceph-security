@@ -33,8 +33,8 @@ Note:
 * Simply write an email w/: <!-- .element: class="fragment" data-fragment-index="5" -->
   * Description of the issue <!-- .element: class="fragment" data-fragment-index="6" -->
   * Affected Ceph Version <!-- .element: class="fragment" data-fragment-index="6" -->
-  * How to reproduce, Proof of Concept <!-- .element: class="fragment" data-fragment-index="6" -->
-  * Patch <!-- .element: class="fragment" data-fragment-index="6" -->
+  * How to reproduce / Proof of Concept <!-- .element: class="fragment" data-fragment-index="6" -->
+  * Patches are welcome! <!-- .element: class="fragment" data-fragment-index="6" -->
 * Security team will contact you <!-- .element: class="fragment" data-fragment-index="7" -->
 
 
@@ -43,7 +43,7 @@ Note:
 
 ### Community - Responsible disclosure process
 * Strict SLA on issues raised with distros <!-- .element class="fragment" -->
-* RedHat security team drives CVE process <!-- .element class="fragment" -->
+* Community security team drives CVE process <!-- .element class="fragment" -->
 * Escalation process to Ceph developers <!-- .element class="fragment" -->
 * Security related fixes are prioritized and backported <!-- .element class="fragment" -->
 * Releases may be accelerated on ad-hoc basis <!-- .element class="fragment" -->

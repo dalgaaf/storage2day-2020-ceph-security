@@ -9,19 +9,23 @@
 * Separate cluster and public <!-- .element: class="fragment" data-fragment-index="1" -->
   * either physically or e.g. w/ VLANs <!-- .element: class="fragment" data-fragment-index="1" -->
 * Separate control nodes from other networks <!-- .element: class="fragment" data-fragment-index="2" -->
-* Do not expose to the internet <!-- .element: class="fragment" data-fragment-index="3" -->
-* Encrypt inter-datacenter traffic <!-- .element: class="fragment" data-fragment-index="4" -->
-* Enable Ceph client host ip:port(s) in firewall <!-- .element: class="fragment" data-fragment-index="5" -->
+* Separate services which expose APIs to external from the rest <!-- .element: class="fragment" data-fragment-index="3" -->
+* Do not expose to the internet <!-- .element: class="fragment" data-fragment-index="4" -->
+* Encrypt inter-datacenter traffic <!-- .element: class="fragment" data-fragment-index="5" -->
+* Enable Ceph client host ip:port(s) in firewall <!-- .element: class="fragment" data-fragment-index="6" -->
+
+Note:
+- external facing APIs are e.g. S3 ...
 
 
 <!-- .slide: data-state="normal" id="proact-2" data-timing="20s" data-menu-title="Proactive: Hyper-converged" -->
 ## Deployment and Setup
 
-### Hyper-converged infra <!-- .element: class="fragment" data-fragment-index="0" -->
+### Hyper-converged infrastructure (HCI) <!-- .element: class="fragment" data-fragment-index="0" -->
 * Avoid if possible <!-- .element: class="fragment" data-fragment-index="1" -->
   * separate compute and storage <!-- .element: class="fragment" data-fragment-index="2" -->
   * scale them independently <!-- .element: class="fragment" data-fragment-index="3" -->
-  * some degree of risk mitigation if daemons are compromided or DoS'd <!-- .element: class="fragment" data-fragment-index="4" -->
+  * some degree of risk mitigation if daemons are compromised or DoS'd <!-- .element: class="fragment" data-fragment-index="4" -->
   * Do not mix control nodes with compute/storage <!-- .element: class="fragment" data-fragment-index="5" -->
 * At least use hardened container setup <!-- .element: class="fragment" data-fragment-index="6" -->
   * as hypervisor: it's still software <!-- .element: class="fragment" data-fragment-index="6" -->
@@ -33,15 +37,16 @@
 ### CephX <!-- .element: class="fragment" data-fragment-index="0" -->
 * Always enable authentication <!-- .element: class="fragment" data-fragment-index="1" -->
 
-<pre><!-- .element: class="fragment" data-fragment-index="2" --><code>
-auth_cluster_required = cephx
+<pre><!-- .element: class="fragment" data-fragment-index="2" --><code>auth_cluster_required = cephx
 auth_service_required = cephx
 auth_client_required = cephx
 </code></pre>
 
-* <!-- .element: class="fragment" data-fragment-index="3" --> If possible use Ceph >= Nautilus release (CEPHX_V2)
+* <!-- .element: class="fragment" data-fragment-index="3" --> Use Ceph >= Nautilus release (CEPHX_V2)
 
-Note: see CVEs
+Note: 
+- see CVEs
+- enable v2 port and disable v1 port
 
 
 <!-- .slide: data-state="normal" id="proact-4" data-timing="20s" data-menu-title="Proactive: CephX" -->
@@ -69,15 +74,17 @@ Note:
 
 ### Hardening <!-- .element: class="fragment" data-fragment-index="0" -->
 
+* Always install security patches ASAP!<!-- .element: class="fragment" data-fragment-index="0" -->
 * Harden your base system <!-- .element: class="fragment" data-fragment-index="1" -->
 * Run non-root Ceph daemons <!-- .element: class="fragment" data-fragment-index="2" -->
   * no escalation to root privileges <!-- .element: class="fragment" data-fragment-index="3" -->
   * run as 'ceph' user and group <!-- .element: class="fragment" data-fragment-index="3" -->
 * MAC <!-- .element: class="fragment" data-fragment-index="4" -->
   * SELinux / AppArmor <!-- .element: class="fragment" data-fragment-index="5" -->
-  * SELinux profiles available <!-- .element: class="fragment" data-fragment-index="5" -->
+  * Profiles available <!-- .element: class="fragment" data-fragment-index="5" -->
 * May run (some daemons) in containers or VMs <!-- .element: class="fragment" data-fragment-index="6" -->
   * MONs and RGWs <!-- .element: class="fragment" data-fragment-index="6" -->
+  * Some distros like SES7 containerize all services <!-- .element: class="fragment" data-fragment-index="7" -->
 
 
 <!-- .slide: data-state="normal" id="proact-5.1" data-timing="20s" data-menu-title="Proactive: Hardening" -->
@@ -92,8 +99,7 @@ Note:
   * Check e.g. for false attempts on authentication <!-- .element: class="fragment" data-fragment-index="4" -->
   * consider automatically blacklist IPs in special scenarios <!-- .element: class="fragment" data-fragment-index="5" -->
 
-<pre><!-- .element: class="fragment" data-fragment-index="5" --><code>
-ceph osd blacklist add ADDRESS[:source_port] [TIME]
+<pre><!-- .element: class="fragment" data-fragment-index="5" --><code>ceph osd blacklist add ADDRESS[:source_port] [TIME]
 </code></pre>
 
 #### TODO: <!-- .element: class="fragment" data-fragment-index="7" -->
@@ -108,8 +114,9 @@ Note: limit on max open sockets per IP may be done on network layer
 
 ### Encryption - Data at Rest
 
-* ceph-volme supports dm-crypt <!-- .element: class="fragment" data-fragment-index="1" -->
-  * Encrypt raw block device (OSD and WAL/DB) <!-- .element: class="fragment" data-fragment-index="2" -->
+* ceph-volume supports dm-crypt <!-- .element: class="fragment" data-fragment-index="0" -->
+  * Encrypt raw block device (OSD and WAL/DB) <!-- .element: class="fragment" data-fragment-index="1" -->
+  * LUKS1, aes-xts-plain64, default keysize=1024 <!-- .element: class="fragment" data-fragment-index="2" -->
   * Separate key for each volume <!-- .element: class="fragment" data-fragment-index="3" -->
   * No performance impact with modern processors <!-- .element: class="fragment" data-fragment-index="4" -->
   * Allows disks to be safely discarded if key remains secret <!-- .element: class="fragment" data-fragment-index="5" -->
@@ -126,14 +133,12 @@ Note: limit on max open sockets per IP may be done on network layer
 * <!-- .element: class="fragment" data-fragment-index="1" --> Protect data from listener on networks
 * <!-- .element: class="fragment" data-fragment-index="2" --> Starting with Nautilus enable messenger v2 protocol
 
-<pre><!-- .element: class="fragment" data-fragment-index="3" --><code>
- ceph mon enable-msgr2
+<pre><!-- .element: class="fragment" data-fragment-index="3" --><code>ceph mon enable-msgr2
 </code></pre>
 
-* <!-- .element: class="fragment" data-fragment-index="4" --> enable ``secure`` mode for encryption (AES-GCM stream cipher)
+* <!-- .element: class="fragment" data-fragment-index="4" --> enable ``secure`` mode for encryption (AES_128_GCM stream cipher)
 
-<pre><!-- .element: class="fragment" data-fragment-index="4" --><code>
- ms_cluster_mode = secure
+<pre><!-- .element: class="fragment" data-fragment-index="4" --><code> ms_cluster_mode = secure
  ms_service_mode = secure
  ms_client_mode = secure
  ms_mon_cluster_mode = secure
@@ -145,25 +150,35 @@ Note:
 * Alternatives: client-side encryption
 
 
+<!-- .slide: data-state="normal" id="proact-9" data-timing="20s" data-menu-title="Proactive: RBD" -->
+## Deployment and Setup
+
+### RBD
+
+* If possible use virtalization layer inbetween <!-- .element: class="fragment" data-fragment-index="1" -->
+  * apply quotas <!-- .element: class="fragment" data-fragment-index="2" -->
+* w/o virtualization layer: <!-- .element: class="fragment" data-fragment-index="3" -->
+  * consider using iSCSI inbetween <!-- .element: class="fragment" data-fragment-index="4" -->
+
+
 <!-- .slide: data-state="normal" id="proact-8" data-timing="20s" data-menu-title="Proactive: RGW" -->
 ## Deployment and Setup
 
 <div>
-    <img style="width: 100%; left: 35%; position: absolute" alt="RGW"
+    <img style="height: 80%; left: 35%; position: absolute" alt="RGW"
          data-src="images/rgw-appliance.svg" />
 </div> <!-- .element: class="fragment" data-fragment-index="3" -->
 
 ### Rados Gateway
-
 * Big and easy taget through HTTP(s) protocol <!-- .element: class="fragment" data-fragment-index="1" -->
-* Allways enable SSL/HTTPs <!-- .element: class="fragment" data-fragment-index="2" -->
+* Always enable SSL/HTTPs <!-- .element: class="fragment" data-fragment-index="2" -->
 * Small appliance in front of RGW <!-- .element: class="fragment" data-fragment-index="3" -->
   * Seprate Network (e.g. one per consumer) <!-- .element: class="fragment" data-fragment-index="4" -->
   * SSL terminated proxy forwarding to RGW <!-- .element: class="fragment" data-fragment-index="5" -->
   * WAF (mod_security) to filter API request <!-- .element: class="fragment" data-fragment-index="6" -->
     * allows e.g. blockage of admin API <!-- .element: class="fragment" data-fragment-index="6" -->
 * Don't share buckets/users between consumers <!-- .element: class="fragment" data-fragment-index="7" -->
-<br>
+* Consider Server-Side Encryption (SSE-KMS) via <br>HashiCorp Vault (>= Octopus release)<!-- .element: class="fragment" data-fragment-index="7" -->
 
 
 <!-- .slide: data-state="normal" id="proact-9" data-timing="20s" data-menu-title="Proactive: CephFS" -->
@@ -190,26 +205,23 @@ Note:
 
 * Path restrictions on mount <!-- .element: class="fragment" data-fragment-index="1" -->
 
-<pre><!-- .element: class="fragment" data-fragment-index="2" --><code>
-ceph fs authorize cephfs client.foo /bar rw
+<pre><!-- .element: class="fragment" data-fragment-index="2" --><code>ceph fs authorize cephfs client.foo /bar rw
 </code></pre>
 
 * Snapshots restrictions: enable only if needed <!-- .element: class="fragment" data-fragment-index="3" -->
 * In complex setups consider network restrictions <!-- .element: class="fragment" data-fragment-index="4" -->
 
-<pre><!-- .element: class="fragment" data-fragment-index="5" --><code>
-caps: [mds] allow r network 10.0.0.0/8, allow rw path=/bar
+<pre><!-- .element: class="fragment" data-fragment-index="5" --><code>caps: [mds] allow r network 10.0.0.0/8, allow rw path=/bar
 caps: [mon] allow r network 10.0.0.0/8
 caps: [osd] allow rw tag cephfs data=cephfs_a network 10.0.0.0/8
 </code></pre>
 
 * Limit user by uid/gids <!-- .element: class="fragment" data-fragment-index="6" -->
 
-<pre><!-- .element: class="fragment" data-fragment-index="7" --><code>
-caps: [mds] allow rw uid=1 gids=1,2
+<pre><!-- .element: class="fragment" data-fragment-index="7" --><code>caps: [mds] allow rw uid=1 gids=1,2
 </code></pre>
 
-Note: 
+Note:%
 - network restrictions: e.g. with multiple CephFS instances
 
 
@@ -232,9 +244,9 @@ Note:
 
 ### Ceph Dashboard
 
-* Enable SSL/TLS <!-- .element class="fragment" -->
+* Allow only SSL/TLS <!-- .element class="fragment" -->
 * User accounts <!-- .element class="fragment" -->
-  * enforce strong passwords (WIP for Octopus) <!-- .element class="fragment" -->
+  * enforce strong passwords (>= Octopus release) <!-- .element class="fragment" -->
   * Cleanup users <!-- .element class="fragment" -->
   * Limit user roles, security scopes and permissions to minimum <!-- .element class="fragment" -->
 * Monitor ceph auth log <!-- .element class="fragment" -->
@@ -265,7 +277,7 @@ Note:
 * Pen-testing (WIP) <!-- .element: class="fragment" data-fragment-index="2" -->
   * human attempt to subvert security, code review <!-- .element: class="fragment" data-fragment-index="2" -->
 * Fuzz testing (WIP) <!-- .element: class="fragment" data-fragment-index="3" -->
-  * automated attempt to subvert or crash by feeding garbade input <!-- .element: class="fragment" data-fragment-index="3" -->
+  * automated attempt to subvert or crash by feeding garbage input <!-- .element: class="fragment" data-fragment-index="3" -->
 
 
 <!-- .slide: data-state="normal" id="proact-22" data-timing="20s" data-menu-title="Proactive: Hardening" -->

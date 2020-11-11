@@ -1,6 +1,6 @@
 <!-- .slide: data-state="cover" id="cover-page" data-timing="20" -->
 <br>
-DOST 2019 - Berlin
+<b>storage</b>2day 2020
 <br>
 <br>
 <br>
