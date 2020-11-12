@@ -1,6 +1,6 @@
 <!-- .slide: data-state="cover" id="cover-page" data-timing="20" -->
 <br>
-<b>storage</b>2day 2020
+<img data-src="images/storage2day_grey_color.svg" style="width:25%;margin:0px">
 <br>
 <br>
 <br>
